@@ -15,11 +15,19 @@ def generate_car_matrix(df)->pd.DataFrame:
     """
     # Write your logic here
   
-    df = pd.read_csv('dataset-1.csv')
-    df = df.pivot(index='id_1', columns='id_2', values='car')
-    for i in range(min(df.shape[0], df.shape[1])):
-        df.iloc[i, i] = 0
-    return df
+    car = pd.read_csv('dataset-1.csv')
+    car = car.pivot(index='id_1', columns='id_2', values='car')
+    for i in range(min(car.shape[0], car.shape[1])):
+        car.iloc[i, i] = 0
+    return car
+
+Sample result dataframe:
+id_2   X  Y  Z
+id_1           
+A      0 10  0
+B      3  0  8
+C      0  2  7
+
 
 
 def get_type_count(df)->dict:
@@ -100,6 +108,13 @@ def multiply_matrix(matrix)->pd.DataFrame:
     new_matrix = new_matrix.round(1)
   
     return new_matrix
+id_2    X     Y    Z
+id_1                
+A      0.0  7.5  0.0
+B      3.8  0.0  6.0
+C      0.0  1.5  5.3
+
+Sample result dataframe:
 
 
 def time_check(df)->pd.Series:
